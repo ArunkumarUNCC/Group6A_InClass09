@@ -1,0 +1,49 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.group6a_inclass09.group6a_inclass09.LoginFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="35dp"
+            android:ems="10"
+            android:id="@+id/editTextUsername"
+            android:hint="@string/userNameHint" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_marginTop="35dp"
+            android:ems="10"
+            android:id="@+id/editTextPassword"
+            android:hint="@string/passwordHint" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/loginText"
+            android:id="@+id/buttonLogIn"
+            android:layout_marginTop="50dp"
+            android:onClick="@string/loginOnClick" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/createAccount"
+            android:layout_marginTop="25dp"
+            android:id="@+id/buttonCreateAccount"
+            android:onClick="@string/createNewAccount" />
+
+    </LinearLayout>
+
+</FrameLayout>
