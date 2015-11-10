@@ -7,18 +7,23 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link messagesFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link messagesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class messagesFragment extends Fragment {
 
+    ListView fMessageList;
+    static MessageAdapter adapter;
+
+    static List<ParseObject> userMessages = new ArrayList<ParseObject>();
 
     public messagesFragment() {
         // Required empty public constructor
@@ -47,13 +52,28 @@ public class messagesFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
+        fMessageList = (ListView) getView().findViewById(R.id.listViewMessages);
+        queryMessagess();
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
 
+    }
+
+    public void queryMessagess(){
+        final ParseQuery<ParseObject> messages = ParseQuery.getQuery("Messages");
+        messages.include("createdBy");
+        messages.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                userMessages = objects;
+                adapter = new MessageAdapter(getActivity(), R.layout.row_item, objects);
+                fMessageList.setAdapter(adapter);
+                adapter.setNotifyOnChange(true);
+            }
+        });
     }
 
     /**
