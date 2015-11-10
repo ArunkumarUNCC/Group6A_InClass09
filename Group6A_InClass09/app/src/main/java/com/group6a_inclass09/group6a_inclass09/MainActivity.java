@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
 
         return super.onOptionsItemSelected(item);
     }
-    
+
     @Override
     public void gotoMessage() {
 
@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     public void gotoSignup() {
         getFragmentManager().beginTransaction()
                 .addToBackStack(null)
-                .replace(R.id.appRelative,new signUpFragment(),"Sigup Tag").commit();
+                .replace(R.id.appRelative, new signUpFragment(), "Sigup Tag").commit();
+    }
 
     public void refreshOnClick (MenuItem aItem){
 
@@ -70,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     }
 
     public void logoutOnClick (MenuItem aItem){
-
 
     }
 }
