@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
 
     @Override
     public void gotoMessage() {
-
+        getFragmentManager().beginTransaction()
+                .replace(R.id.appRelative,new messagesFragment(),"Message Tag").commit();
     }
 
     @Override

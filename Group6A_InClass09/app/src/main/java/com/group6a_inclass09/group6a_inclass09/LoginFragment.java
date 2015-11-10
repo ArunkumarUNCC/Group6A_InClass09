@@ -26,7 +26,7 @@ public class LoginFragment extends Fragment {
 
     private LoginInterface fListener;
 
-    EditText fUserName,fPassword;
+//    EditText fUserName,fPassword;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -65,8 +65,8 @@ public class LoginFragment extends Fragment {
         getView().findViewById(R.id.buttonLogIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fUserName = (EditText) getView().findViewById(R.id.editTextUserName);
-                fPassword = (EditText) getView().findViewById(R.id.editTextPassword);
+                EditText fUserName = (EditText) getView().findViewById(R.id.editTextUsername);
+                EditText fPassword = (EditText) getView().findViewById(R.id.editTextPassword);
 
                 String lUser,lPass;
                 lUser = fUserName.getText().toString();
@@ -79,17 +79,19 @@ public class LoginFragment extends Fragment {
                     return;
                 }
 
-                ParseUser.logInInBackground(lUser, lPass, new LogInCallback() {
-                    @Override
-                    public void done(ParseUser user, ParseException e) {
-                        if (e != null)
-                        Toast.makeText(getActivity(), "Invalid Details", Toast.LENGTH_SHORT).show();
-                        else{
-                            fListener.gotoMessage();
+                fListener.gotoMessage();
 
-                        }
-                    }
-                });
+//                ParseUser.logInInBackground(lUser, lPass, new LogInCallback() {
+//                    @Override
+//                    public void done(ParseUser user, ParseException e) {
+//                        if (e != null)
+//                        Toast.makeText(getActivity(), "Invalid Details", Toast.LENGTH_SHORT).show();
+//                        else{
+//                            fListener.gotoMessage();
+//
+//                        }
+//                    }
+//                });
 
 
             }
