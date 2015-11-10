@@ -9,9 +9,6 @@
     <string name="createAccount">Create New Account</string>
     <string name="createNewAccount">createNewAccountOnClick</string>
     <string name="loginOnClick">loginOnClick</string>
-
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="signUpUserNameHint">User Name</string>
     <string name="emailHint">Email</string>
     <string name="confirmPasswordHint">Confirm Password</string>
@@ -22,4 +19,7 @@
     <string name="messageTitle">Message:</string>
     <string name="sendButtonText">Send</string>
     <string name="sendMessageOnClick">sendMessageOnClick</string>
+    <string name="firstName">FirstName LastName</string>
+    <string name="messageBody">Lorem ipsum dolor sit amet, pri minim instructior an, dicit deleniti mea ex. Eum id affert dolores, at has illud eirmod complectitur. Cum diam iriure suavitate ex, prima vidisse sea ut. Quo ex viris lucilius indoctum, dico intellegebat nam ut</string>
+    <string name="dateText">MM/DD/YYYY HH:MM</string>
 </resources>
