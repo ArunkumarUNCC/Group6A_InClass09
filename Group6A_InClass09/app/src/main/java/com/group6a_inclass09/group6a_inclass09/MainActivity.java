@@ -16,8 +16,9 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        ParseObject testObject = new ParseObject("TestObject");
-//        testObject.put("foo", "bar");
+//        ParseObject testObject = new ParseObject("Messages");
+//        testObject.put("message", "bar");
+////        testObject.put("Created By", "bar");
 //        testObject.saveInBackground();
 
         ParseUser checkUser = ParseUser.getCurrentUser();
