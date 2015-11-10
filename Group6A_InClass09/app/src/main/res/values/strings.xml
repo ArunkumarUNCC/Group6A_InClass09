@@ -9,4 +9,17 @@
     <string name="createAccount">Create New Account</string>
     <string name="createNewAccount">createNewAccountOnClick</string>
     <string name="loginOnClick">loginOnClick</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signUpUserNameHint">User Name</string>
+    <string name="emailHint">Email</string>
+    <string name="confirmPasswordHint">Confirm Password</string>
+    <string name="signUpButtonText">Sign up</string>
+    <string name="cancelButtonText">Cancel</string>
+    <string name="cancelOnClick">cancelOnClick</string>
+    <string name="signUpOnClick">signUpOnClick</string>
+    <string name="messageTitle">Message:</string>
+    <string name="sendButtonText">Send</string>
+    <string name="sendMessageOnClick">sendMessageOnClick</string>
 </resources>
