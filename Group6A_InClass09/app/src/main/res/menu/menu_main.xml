@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item android:id="@+id/refresh" android:title="Refresh" android:onClick="refreshOnClick"
         android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/compose" android:title="Refresh" android:onClick="composeOnClick"
+    <item android:id="@+id/compose" android:title="Compose" android:onClick="composeOnClick"
         android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/logout" android:title="Refresh" android:onClick="logoutOnClick"
+    <item android:id="@+id/logout" android:title="Logout" android:onClick="logoutOnClick"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>
