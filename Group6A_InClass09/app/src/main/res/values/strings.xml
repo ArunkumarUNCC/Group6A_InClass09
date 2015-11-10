@@ -19,4 +19,7 @@
     <string name="cancelButtonText">Cancel</string>
     <string name="cancelOnClick">cancelOnClick</string>
     <string name="signUpOnClick">signUpOnClick</string>
+    <string name="messageTitle">Message:</string>
+    <string name="sendButtonText">Send</string>
+    <string name="sendMessageOnClick">sendMessageOnClick</string>
 </resources>
