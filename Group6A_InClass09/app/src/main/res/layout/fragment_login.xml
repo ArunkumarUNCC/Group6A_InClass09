@@ -33,16 +33,17 @@
             android:layout_height="wrap_content"
             android:text="@string/loginText"
             android:id="@+id/buttonLogIn"
-            android:layout_marginTop="50dp"
-            android:onClick="@string/loginOnClick" />
+            android:layout_marginTop="50dp" />
+            <!--android:onClick="@string/loginOnClick" />-->
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/createAccount"
             android:layout_marginTop="25dp"
-            android:id="@+id/buttonCreateAccount"
-            android:onClick="@string/createNewAccount" />
+            android:id="@+id/buttonCreateAccount" />
+            <!--android:onClick="@string/createNewAccount"-->
+            <!--/>-->
 
     </LinearLayout>
 

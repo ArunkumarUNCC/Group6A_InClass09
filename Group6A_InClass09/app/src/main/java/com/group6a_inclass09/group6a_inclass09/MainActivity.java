@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoginFragment.LoginInterface {
 
 
     @Override
@@ -51,5 +51,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void gotoMessage() {
+
+    }
+
+    @Override
+    public void gotoSignup() {
+        getFragmentManager().beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.appRelative,new signUpFragment(),"Sigup Tag").commit();
     }
 }

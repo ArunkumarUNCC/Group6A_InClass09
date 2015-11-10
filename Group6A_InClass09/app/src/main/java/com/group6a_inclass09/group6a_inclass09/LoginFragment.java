@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import android.view.ViewGroup;
  */
 public class LoginFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
+    private LoginInterface fListener;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -31,28 +32,40 @@ public class LoginFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            fListener = (LoginInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement LoginInterface methods");
         }
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-//        try {
-//            mListener = (OnFragmentInteractionListener) activity;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(activity.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        getView().findViewById(R.id.buttonCreateAccount).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fListener.gotoSignup();
+            }
+        });
+
+        getView().findViewById(R.id.buttonLogIn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fListener.gotoMessage();
+            }
+        });
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        fListener = null;
     }
 
     /**
@@ -71,11 +84,15 @@ public class LoginFragment extends Fragment {
     }
 
     public void createNewAccountOnClick (View aView){
-
+        fListener.gotoSignup();
     }
 
     public void loginOnClick (View aView){
-
+        fListener.gotoMessage();
     }
 
+    public interface LoginInterface{
+        public void gotoMessage();
+        public void gotoSignup();
+    }
 }
