@@ -53,7 +53,7 @@ public class messagesFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        
+
     }
 
     /**

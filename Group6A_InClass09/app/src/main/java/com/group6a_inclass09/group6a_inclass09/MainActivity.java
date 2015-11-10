@@ -2,11 +2,14 @@ package com.group6a_inclass09.group6a_inclass09;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity implements LoginFragment.LoginInterface, signUpFragment.SignUpInterface {
 
@@ -16,9 +19,21 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ParseUser user = new ParseUser();
+        user.setUsername("bob");
+        user.setPassword("123");
+        user.setEmail("bob@g.com");
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e==null)
+                    Log.d("demo","Cool");
+                else Log.d("demo","Excep");
+            }
+        });
 //        ParseObject testObject = new ParseObject("Messages");
 //        testObject.put("message", "bar");
-////        testObject.put("Created By", "bar");
+//        testObject.put("Created By", "bar");
 //        testObject.saveInBackground();
 
         ParseUser checkUser = ParseUser.getCurrentUser();
