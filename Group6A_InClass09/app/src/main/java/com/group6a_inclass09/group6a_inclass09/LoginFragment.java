@@ -8,6 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 
 /**
@@ -19,6 +25,8 @@ import android.view.ViewGroup;
 public class LoginFragment extends Fragment {
 
     private LoginInterface fListener;
+
+    EditText fUserName,fPassword;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -57,7 +65,33 @@ public class LoginFragment extends Fragment {
         getView().findViewById(R.id.buttonLogIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fListener.gotoMessage();
+                fUserName = (EditText) getView().findViewById(R.id.editTextUserName);
+                fPassword = (EditText) getView().findViewById(R.id.editTextPassword);
+
+                String lUser,lPass;
+                lUser = fUserName.getText().toString();
+                lPass = fPassword.getText().toString();
+
+                if(lUser.isEmpty())
+                    fUserName.setError("Email cannot be empty");
+                if(lPass.isEmpty()) {
+                    fPassword.setError("Password cannot be empty");
+                    return;
+                }
+
+                ParseUser.logInInBackground(lUser, lPass, new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException e) {
+                        if (e != null)
+                        Toast.makeText(getActivity(), "Invalid Details", Toast.LENGTH_SHORT).show();
+                        else{
+                            fListener.gotoMessage();
+
+                        }
+                    }
+                });
+
+
             }
         });
     }
