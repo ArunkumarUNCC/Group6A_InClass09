@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/firstNameText"
+        android:id="@+id/textViewmFirstName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/messageBody"
+        android:paddingLeft="5dp"
+        android:id="@+id/textViewMessageBody"
+        android:layout_below="@+id/textViewmFirstName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/dateText"
+        android:id="@+id/textViewDate"
+        android:paddingLeft="5dp"
+        android:layout_below="@+id/textViewMessageBody"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFAE00"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:id="@+id/imageViewDeleteButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/delete_icon" />
+
+</RelativeLayout>
