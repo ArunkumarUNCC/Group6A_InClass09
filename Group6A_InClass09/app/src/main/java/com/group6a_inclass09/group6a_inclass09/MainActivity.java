@@ -5,12 +5,30 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        ParseObject testObject = new ParseObject("TestObject");
+//        testObject.put("foo", "bar");
+//        testObject.saveInBackground();
+
+        ParseUser checkUser = ParseUser.getCurrentUser();
+
+        if (checkUser!=null){
+            //Go for messaging fragment
+        }
+        else {
+            getFragmentManager().beginTransaction()
+                    .add(R.id.appRelative, new LoginFragment(), "Login Tag").commit();
+        }
     }
 
     @Override
