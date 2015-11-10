@@ -45,14 +45,11 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
-
+    
     @Override
     public void gotoMessage() {
 
@@ -63,5 +60,17 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         getFragmentManager().beginTransaction()
                 .addToBackStack(null)
                 .replace(R.id.appRelative,new signUpFragment(),"Sigup Tag").commit();
+
+    public void refreshOnClick (MenuItem aItem){
+
+    }
+
+    public void composeOnClick (MenuItem aItem){
+
+    }
+
+    public void logoutOnClick (MenuItem aItem){
+
+
     }
 }
