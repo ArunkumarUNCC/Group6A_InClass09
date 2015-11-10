@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-public class MainActivity extends AppCompatActivity implements LoginFragment.LoginInterface {
+public class MainActivity extends AppCompatActivity implements LoginFragment.LoginInterface, signUpFragment.SignUpInterface {
 
 
     @Override
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     @Override
     public void gotoMessage() {
         getFragmentManager().beginTransaction()
-                .replace(R.id.appRelative,new messagesFragment(),"Message Tag").commit();
+                .replace(R.id.appRelative, new messagesFragment(), "Message Tag").commit();
     }
 
     @Override
@@ -74,5 +74,10 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
 
     public void logoutOnClick (MenuItem aItem){
 
+    }
+
+    @Override
+    public void goToLogin() {
+        getFragmentManager().popBackStack();
     }
 }

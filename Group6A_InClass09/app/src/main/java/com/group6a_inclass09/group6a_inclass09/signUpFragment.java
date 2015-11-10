@@ -7,7 +7,13 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.EditText;
+
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 
 /**
@@ -18,27 +24,86 @@ import android.widget.EditText;
  */
 public class signUpFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
+    public TextView fName, fEmail, fPass, fRePass;
 
-
+    private SignUpInterface fListener;
 
     public signUpFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        fName = (TextView) getView().findViewById(R.id.textViewFirstName);
+        fEmail = (TextView) getView().findViewById(R.id.editTextEmail);
+        fPass = (TextView) getView().findViewById(R.id.editTextPassword);
+        fRePass = (TextView) getView().findViewById(R.id.editTextConfirmPassword);
+
+
+        getView().findViewById(R.id.buttonCancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fListener.goToLogin();
+            }
+        });
+
+        getView().findViewById(R.id.buttonSignUp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String lName,lEmail,lPassword,lRePass;
+
+                lName = fName.getText().toString();
+                lEmail = fEmail.getText().toString();
+                lPassword = fPass.getText().toString();
+                lRePass = fRePass.getText().toString();
+
+                if(lName.isEmpty()){
+                    fName.setError("Enter Name");
+                }
+                if(lEmail.isEmpty()){
+                    fEmail.setError("Enter Email");
+                }
+                if (lPassword.isEmpty()){
+                    fPass.setError("Empty Password");
+                }
+                if (lRePass.isEmpty()){
+                    fRePass.setError("Re-Enter Password");
+                }
+                if(!lPassword.equals(lRePass)){
+                    fPass.setText("");
+                    fRePass.setText("");
+                    Toast.makeText(getActivity(), "Passwords Mismatch", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                ParseUser lSignupUser = new ParseUser();
+                lSignupUser.setEmail(lEmail);
+                lSignupUser.setPassword(lPassword);
+                lSignupUser.setUsername(lEmail);
+                lSignupUser.signUpInBackground(new SignUpCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            Toast.makeText(getActivity(), "Signup Successful",Toast.LENGTH_SHORT).show();
+                            fListener.goToLogin();
+                        } else {
+                            e.printStackTrace();
+                            Toast.makeText(getActivity(), "Email Already exists",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sign_up, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -55,7 +120,7 @@ public class signUpFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        fListener = null;
     }
 
     /**
@@ -79,6 +144,10 @@ public class signUpFragment extends Fragment {
 
     public void signUpOnClick (View aView){
 
+    }
+
+    public interface SignUpInterface{
+        public void goToLogin();
     }
 
 }
