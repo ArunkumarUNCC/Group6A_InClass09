@@ -81,19 +81,19 @@ public class LoginFragment extends Fragment {
                     return;
                 }
 
-                fListener.gotoMessage();
 
-//                ParseUser.logInInBackground(lUser, lPass, new LogInCallback() {
-//                    @Override
-//                    public void done(ParseUser user, ParseException e) {
-//                        if (e != null)
-//                        Toast.makeText(getActivity(), "Invalid Details", Toast.LENGTH_SHORT).show();
-//                        else{
-//                            fListener.gotoMessage();
-//
-//                        }
-//                    }
-//                });
+
+                ParseUser.logInInBackground(lUser, lPass, new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException e) {
+                        if (e != null)
+                        Toast.makeText(getActivity(), "Invalid Details", Toast.LENGTH_SHORT).show();
+                        else{
+                            fListener.gotoMessage();
+
+                        }
+                    }
+                });
 
 
             }

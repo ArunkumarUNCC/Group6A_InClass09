@@ -39,7 +39,7 @@ public class MessageAdapter extends ArrayAdapter<ParseObject> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater) fContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(resource,parent,false);
@@ -49,7 +49,7 @@ public class MessageAdapter extends ArrayAdapter<ParseObject> {
 
         //Set Names
         ParseUser user = obj.getParseUser("createdBy");
-        String name = user.getString("Name");
+        String name = user.getString("username");
         fCommonTextView = (TextView) convertView.findViewById(R.id.textViewFirstName);
         fCommonTextView.setText(name);
 
@@ -82,7 +82,7 @@ public class MessageAdapter extends ArrayAdapter<ParseObject> {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
-//                                MessageActivity.userMessages.remove(position);
+                                messagesFragment.userMessages.remove(position);
                                 notifyDataSetChanged();
 
                             }

@@ -36,7 +36,7 @@ public class signUpFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        fName = (TextView) getView().findViewById(R.id.textViewFirstName);
+        fName = (TextView) getView().findViewById(R.id.editTextUserName);
         fEmail = (TextView) getView().findViewById(R.id.editTextEmail);
         fPass = (TextView) getView().findViewById(R.id.editTextPassword);
         fRePass = (TextView) getView().findViewById(R.id.editTextConfirmPassword);
@@ -82,7 +82,7 @@ public class signUpFragment extends Fragment {
                 ParseUser lSignupUser = new ParseUser();
                 lSignupUser.setEmail(lEmail);
                 lSignupUser.setPassword(lPassword);
-                lSignupUser.setUsername(lEmail);
+                lSignupUser.setUsername(lName);
                 lSignupUser.signUpInBackground(new SignUpCallback() {
                     @Override
                     public void done(ParseException e) {
@@ -109,12 +109,12 @@ public class signUpFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-//        try {
-//            mListener = (OnFragmentInteractionListener) activity;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(activity.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
+        try {
+            fListener = (SignUpInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
